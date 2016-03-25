@@ -57,9 +57,10 @@ module ROTP
     # along with the secret
     #
     def int_to_bytestring(int, padding = 8)
+      int = int.to_i
       result = []
       until int == 0
-        result << (int.to_i & 0xFF).chr
+        result << (int & 0xFF).chr
         int >>=  8
       end
       result.reverse.join.rjust(padding, 0.chr)
